@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const artworks = [
-  { id: 1, src: "/art1.jpg", title: "Midnight Charcoal", size: "24x36", span: "md:col-span-2 md:row-span-2" },
-  { id: 2, src: "/art2.jpg", title: "Shadow Play", size: "18x24", span: "md:col-span-1 md:row-span-1" },
-  { id: 3, src: "/art3.jpg", title: "The Bloom", size: "12x12", span: "md:col-span-1 md:row-span-2" },
+  { id: 1, src: "/1.png", title: "Midnight Charcoal", size: "24x36", span: "md:col-span-2 md:row-span-2" },
+  { id: 2, src: "/2.jpg", title: "Shadow Play", size: "18x24", span: "md:col-span-1 md:row-span-1" },
+  { id: 3, src: "/3.webp", title: "Blue and Purple. MATTED Watercolor Prints.", size: "12x12", span: "md:col-span-1 md:row-span-2" },
   // Add more items...
 ];
 
@@ -34,7 +34,7 @@ export default function GalleryPage() {
                 alt={art.title}
                 width={800}
                 height={1000}
-                className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-105"
+                className="object-cover w-full h-full transition-all duration-700 ease-in-out group-hover:scale-105"
               />
               {/* Elegant Hover Overlay */}
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
