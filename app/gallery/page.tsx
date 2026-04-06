@@ -42,6 +42,7 @@ export default function GalleryPage() {
                 <h3 className="text-white font-serif italic text-2xl">{art.title}</h3>
                 <p className="text-zinc-400 text-xs mt-1">{art.size} — Graphite on Paper</p>
               </div>
+              
             </motion.div>
           ))}
         </div>
