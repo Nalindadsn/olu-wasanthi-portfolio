@@ -1,74 +1,85 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { OluLogo } from "./OluLogo";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 
 const navLinks = [
-  { name: "Portfolio", href: "/portfolio" },
+  { name: "The Gallery", href: "/portfolio" },
   { name: "Exhibitions", href: "/exhibitions" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (!mounted) return null;
+
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
         isScrolled 
-          ? "py-4 bg-black/60 backdrop-blur-xl border-b border-white/10" 
-          : "py-8 bg-transparent"
+          ? "py-4 bg-white/70 dark:bg-black/40 backdrop-blur-xl border-b border-zinc-200 dark:border-white/5 shadow-sm" 
+          : "py-10 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-8 flex items-center justify-between">
-        {/* Brand/Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <OluLogo className="w-8 h-8 text-amber-200 transition-transform duration-500 group-hover:rotate-90" />
-          <span className="text-white tracking-[0.2em] font-light text-sm uppercase">
-            Olu <span className="font-serif italic lowercase tracking-normal">Wasanthi</span>
+      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        
+        {/* LOGO */}
+        <Link href="/" className="flex flex-col group">
+          <span className="text-zinc-900 dark:text-white tracking-[0.4em] font-light text-[10px] uppercase leading-none">
+            Olu
+          </span>
+          <span className="font-serif italic text-zinc-500 text-xl leading-none mt-1 group-hover:text-amber-600 dark:group-hover:text-amber-200 transition-colors">
+            Wasanthi
           </span>
         </Link>
 
-        {/* Navigation Links */}
+        {/* LINKS */}
         <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((link, index) => (
-            <motion.div
+          {navLinks.map((link) => (
+            <Link 
               key={link.name}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 + 0.5 }}
+              href={link.href}
+              className="relative text-[10px] uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors group"
             >
-              <Link 
-                href={link.href}
-                className="relative text-xs uppercase tracking-widest text-zinc-400 hover:text-amber-200 transition-colors duration-300 group"
-              >
-                {link.name}
-                {/* Premium Underline Animation */}
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 group-hover:w-full" />
-              </Link>
-            </motion.div>
+              {link.name}
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-amber-500 dark:bg-amber-200 rounded-full opacity-0 transition-all group-hover:opacity-100" />
+            </Link>
           ))}
+          
+          {/* THEME TOGGLE */}
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="ml-4 p-2 rounded-full border border-zinc-200 dark:border-white/10 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all"
+          >
+            {theme === "dark" ? (
+              <span className="text-xs">☀️</span>
+            ) : (
+              <span className="text-xs">🌙</span>
+            )}
+          </button>
         </div>
 
-        {/* "Pro" Call to Action */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="hidden md:block px-6 py-2 border border-amber-200/20 rounded-full text-[10px] uppercase tracking-[0.2em] text-amber-200 hover:bg-amber-200 hover:text-black transition-all duration-500"
+        {/* CTA */}
+        <Link 
+          href="/contact"
+          className="px-6 py-2 border border-zinc-900 dark:border-white/20 text-zinc-900 dark:text-white text-[9px] uppercase tracking-[0.3em] hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
         >
           Inquire
-        </motion.button>
+        </Link>
       </div>
     </motion.nav>
   );

@@ -121,10 +121,25 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+    body {
+    @apply transition-colors duration-700 ease-in-out;
+  }
+
+  .dark {
+    --bg-main: #050505;
+    --text-main: #ffffff;
+    --accent: #fde68a; /* Amber-200 */
+    --mesh-glow: rgba(88, 28, 135, 0.2); /* Purple Glow */
+  }
+
+  .light {
+    --bg-main: #f9f9f8; /* Off-white "Paper" color */
+    --text-main: #18181b; /* Zinc-900 */
+    --accent: #d97706; /* Deeper Amber for contrast */
+    --mesh-glow: rgba(59, 130, 246, 0.05); /* Very subtle Blue air */
   }
   html {
     @apply font-sans;
   }
 }
+/* app/globals.css */
