@@ -2,130 +2,117 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-const OluFlowerSVG = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" fill="none" className={className}>
-    <path
-      d="M50 10C50 10 35 40 10 50C35 60 50 90 50 90C50 90 65 60 90 50C65 40 50 10 50 10Z"
-      stroke="currentColor"
-      strokeWidth="1"
-      strokeLinecap="round"
-    />
-    <circle cx="50" cy="50" r="3" fill="currentColor" />
-  </svg>
-);
+import { HairyWaterLilyLogo } from "./HairyWaterLilyLogo";
 
 export default function ArtistHero() {
   return (
     <section className="relative min-h-screen flex items-center bg-white dark:bg-[#0d0d0d] transition-colors duration-700 overflow-hidden pt-20">
+      
+      {/* 🔥 EDITORIAL PROFILE BACKGROUND */}
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute left-0 z-0 overflow-hidden pointer-events-none w-full lg:w-1/2 top-0 h-[70vh] lg:h-full"
+      >
+        <Image
+          src="/olu-wasanthi.png"
+          alt="Olu Wasanthi"
+          fill
+          className="
+            object-cover object-top transition-all duration-1000
+            mt-[100px] lg:mt-0 
+            opacity-[0.2] dark:opacity-[0.15]
+            lg:opacity-[0.8] lg:dark:opacity-[0.25]
+            grayscale hover:grayscale-0
+          "
+          priority
+        />
+        {/* Soft edge blending */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-[#0d0d0d] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-[#0d0d0d] lg:hidden" />
+      </motion.div>
 
-      {/* 🔥 DYNAMIC LEFT BACKGROUND */}
-     {/* 🔥 DYNAMIC LEFT BACKGROUND */}
-<motion.div
-  initial={{ opacity: 0, x: -80 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 1.2 }}
-  className="absolute left-0 bottom-0 h-[calc(100vh-150px)] w-full lg:w-1/2 z-0 overflow-hidden pointer-events-none"
->
-  <Image
-    src="/olu-wasanthi.png"
-    alt="Olu Wasanthi"
-    fill
-    // Increased dark:opacity to 0.3 and added dark:brightness to help it stand out
-    className="object-cover object-top opacity-[0.9] dark:opacity-[0.3]  dark:brightness-125 transition-all duration-700"
-    priority
-  />
-  
-  {/* Themed Gradient Fade - Adjusted opacity to let more of the image through in dark mode */}
-  <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-[#0d0d0d] via-white/80 dark:via-[#0d0d0d]/40 to-transparent transition-colors duration-700" />
-  
-  {/* Top shadow to blend with navbar area */}
-  <div className="absolute inset-0 bg-gradient-to-b from-white/40 dark:from-[#0d0d0d]/60 via-transparent to-transparent" />
-</motion.div>
+      {/* --- BACKGROUND MESH & WATERMARK REMOVED FOR CLEANER LOOK --- */}
 
-      {/* 🌈 BACKGROUND MESH */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-5%] right-[-5%] w-[50%] h-[60%] bg-purple-500/10 dark:bg-purple-900/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[50%] bg-blue-500/5 dark:bg-blue-900/10 rounded-full blur-[120px]" />
-      </div>
-
-      {/* 🌸 WATERMARK */}
-      <div className="absolute right-[-8%] top-1/2 -translate-y-1/2 opacity-[0.03] dark:opacity-[0.02] text-zinc-900 dark:text-white pointer-events-none z-0">
-        <OluFlowerSVG className="w-[900px] h-[900px] rotate-12" />
-      </div>
-
-      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12 items-center z-10">
+      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 items-center z-10">
         
-        {/* LEFT CONTENT */}
-        <div className="lg:col-span-5">
+        {/* LEFT CONTENT: TYPOGRAPHY FOCUS */}
+        <div className="lg:col-span-6 xl:col-span-5">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center gap-4 mb-8">
-              <span className="h-[1px] w-12 bg-amber-600/50 dark:bg-amber-200/50"></span>
-              <span className="text-[10px] uppercase tracking-[0.5em] text-amber-700 dark:text-amber-200/80 font-medium dark:font-light">
-                Fine Art Drawing Artist
+            <div className="flex items-center gap-3 mb-10">
+              <span className="h-[1px] w-8 bg-amber-600/60 dark:bg-amber-200/40" />
+              <span className="text-[10px] uppercase tracking-[0.6em] text-amber-800 dark:text-amber-200/60 font-medium">
+                Fine Art Artist
               </span>
             </div>
 
-            <h1 className="text-7xl md:text-9xl font-light tracking-tighter text-zinc-900 dark:text-white leading-none">
-              Olu <br />
-              <span className="font-serif italic text-zinc-400 dark:text-zinc-500">
+            <h1 className="text-7xl md:text-[120px] font-light tracking-tighter text-zinc-900 dark:text-white leading-[0.85]">
+              <span className="flex items-center gap-6 md:gap-10"> 
+                <HairyWaterLilyLogo className="w-10 h-10 md:w-20 md:h-20 text-zinc-800 dark:text-white transition-transform hover:rotate-12 duration-700" />
+                <span className="relative">Olu</span>
+              </span>
+              <span className="font-serif italic text-zinc-400 dark:text-zinc-600 block mt-4 md:mt-6">
                 Wasanthi
               </span>
             </h1>
 
-            <p className="mt-8 text-zinc-600 dark:text-zinc-500 max-w-sm text-lg font-light leading-relaxed border-l border-zinc-200 dark:border-zinc-800 pl-6">
-              Exploring the delicate balance of light and shadow through hand-drawn narratives on archival medium.
-            </p>
-
-            <div className="mt-12 flex items-center gap-8">
+            <div className="mt-12 max-w-sm space-y-6">
+              <p className="text-zinc-500 dark:text-zinc-400 text-lg font-light leading-relaxed border-l-2 border-zinc-100 dark:border-zinc-800/50 pl-6">
+                Exploring the delicate balance of light and shadow through hand-drawn narratives on archival medium.
+              </p>
+              
               <motion.button
-                whileHover={{ gap: "24px" }}
-                className="flex items-center gap-4 text-zinc-900 dark:text-white text-sm uppercase tracking-widest transition-all group"
+                whileHover={{ x: 10 }}
+                className="flex items-center gap-6 text-zinc-900 dark:text-white text-[11px] uppercase tracking-[0.3em] font-bold dark:font-medium group pt-4"
               >
-                Enter Gallery
-                <span className="h-[1px] w-8 bg-zinc-900 dark:bg-white group-hover:w-16 transition-all" />
+                Explore Archive
+                <div className="relative overflow-hidden">
+                   <div className="h-[1px] w-12 bg-zinc-900 dark:bg-white transition-transform duration-500 group-hover:translate-x-full" />
+                   <div className="absolute top-0 left-0 h-[1px] w-12 bg-amber-500 -translate-x-full transition-transform duration-500 group-hover:translate-x-0" />
+                </div>
               </motion.button>
             </div>
           </motion.div>
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="lg:col-span-7 relative">
+        {/* RIGHT CONTENT: THE MASTERPIECE */}
+        <div className="lg:col-span-6 xl:col-span-7 relative">
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
-            className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-900 rounded-sm shadow-2xl overflow-hidden group border border-zinc-200 dark:border-white/5"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
+            className="relative aspect-[16/11] w-full bg-zinc-50 dark:bg-zinc-900 rounded-sm shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] overflow-hidden group"
           >
             <Image
               src="/drawings.png"
               alt="Olu Wasanthi Art"
               fill
-              className="object-cover opacity-90 dark:opacity-80 group-hover:scale-105 transition-transform duration-1000"
+              className="object-cover opacity-95 dark:opacity-90 group-hover:scale-[1.03] transition-transform duration-[2s] ease-out"
             />
-            {/* Gallery Frame */}
-            <div className="absolute inset-0 border-[20px] md:border-[30px] border-white/30 dark:border-[#0d0d0d]/40 pointer-events-none" />
+            {/* Minimal Gallery Matting */}
+            <div className="absolute inset-0 border-[15px] md:border-[40px] border-white/10 dark:border-black/20 pointer-events-none" />
           </motion.div>
 
-          {/* FLOATING CARD */}
+          {/* FLOATING CARD - REDUCED SIZE FOR ELEGANCE */}
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
+            initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="absolute -bottom-8 right-4 md:-left-8 bg-white/90 dark:bg-white/5 backdrop-blur-2xl border border-zinc-200 dark:border-white/10 p-8 rounded-sm shadow-xl max-w-[280px]"
+            transition={{ delay: 1 }}
+            className="absolute -bottom-10 right-4 md:right-12 bg-white/80 dark:bg-[#111]/80 backdrop-blur-xl border border-zinc-200 dark:border-white/5 p-6 shadow-2xl max-w-[240px]"
           >
-            <p className="text-[10px] text-amber-700 dark:text-amber-200 uppercase tracking-widest mb-2 font-bold dark:font-normal">
-              Featured Work
-            </p>
-            <h3 className="text-zinc-900 dark:text-white font-serif italic text-xl">
-              The Silent Bloom
+            <span className="text-[9px] text-amber-700 dark:text-amber-300 uppercase tracking-[0.4em] mb-3 block font-semibold">
+              Current Feature
+            </span>
+            <h3 className="text-zinc-900 dark:text-white font-serif italic text-lg leading-tight">
+              The Hairy Water Lily
             </h3>
-            <p className="text-zinc-500 text-xs mt-2 leading-relaxed">
-              Charcoal and Graphite on Archival Paper, 2026.
+            <p className="text-zinc-500 text-[10px] mt-2 font-light">
+              Charcoal on Cotton Rag, 2026.
             </p>
           </motion.div>
         </div>
