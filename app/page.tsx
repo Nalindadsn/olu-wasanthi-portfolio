@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Olu Wasanthi | Fine Art Drawing Artist",
     description: "Hand-drawn narratives on archival medium. Explore the digital gallery of charcoal and graphite works.",
-    url: "https://oluwasanthi.com", // Replace with your actual domain
+    url: "olu-wasanthi-portfolio.vercel.app", // Replace with your actual domain
     siteName: "Olu Wasanthi",
     images: [
       {
