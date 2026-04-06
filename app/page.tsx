@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "Olu Wasanthi",
     images: [
       {
-        url: "/olu-wasanthi.png", // Recommended size: 1200x630
+        url: "/drawings.png", // Recommended size: 1200x630
         width: 1200,
         height: 630,
         alt: "Olu Wasanthi Fine Art Gallery",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Olu Wasanthi | Fine Art Artist",
     description: "Charcoal and graphite narratives by Sri Lankan artist Olu Wasanthi.",
-    images: ["/olu-wasanthi.png"],
+    images: ["/drawings.png"],
   },
   
 };
