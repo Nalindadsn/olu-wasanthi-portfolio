@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { name: "The Gallery", href: "/portfolio" },
-  { name: "Exhibitions", href: "/exhibitions" },
+  { name: "The Gallery", href: "/gallery" },
   { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -61,16 +62,7 @@ export default function Navbar() {
           ))}
           
           {/* THEME TOGGLE */}
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="ml-4 p-2 rounded-full border border-zinc-200 dark:border-white/10 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all"
-          >
-            {theme === "dark" ? (
-              <span className="text-xs">☀️</span>
-            ) : (
-              <span className="text-xs">🌙</span>
-            )}
-          </button>
+          <ThemeToggle/>
         </div>
 
         {/* CTA */}
